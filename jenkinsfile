@@ -1,7 +1,9 @@
 properties([disableConcurrentBuilds()])
 
 pipeline {
-    agent ubuntu  
+    agent {
+        label 'ubuntu'
+    }  
         
         
     triggers { pollSCM('* * * * *') }
@@ -11,10 +13,10 @@ pipeline {
     }
     stages {
        
-        stage("create docker image") {
+        stage("build docker compouse") {
             steps {
                 echo " ============== start building image =================="
-                dir ('/') {
+                dir ('/site-jenkins/www-rpcs3/') {
                     sh 'docker-compouse up -d  '
                 }
             }
