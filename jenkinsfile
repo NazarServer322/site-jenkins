@@ -17,7 +17,7 @@ pipeline {
             steps {
                 echo " ============== start building compouse =================="
                 dir ('site-jenkins/www-rpcs3/') {
-                    sh 'docker-compouse up -d  '
+                    sh 'docker-compouse build  '
                 }
             }
         }
