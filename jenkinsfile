@@ -15,8 +15,8 @@ pipeline {
        
         stage("build docker compouse") {
             steps {
-                echo " ============== start building image =================="
-                dir ('/site-jenkins/www-rpcs3/') {
+                echo " ============== start building compouse =================="
+                dir ('site-jenkins/www-rpcs3/') {
                     sh 'docker-compouse up -d  '
                 }
             }
