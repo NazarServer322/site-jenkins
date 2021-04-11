@@ -17,7 +17,7 @@ pipeline {
             steps {
                 echo " ============== start building compouse =================="
                 dir ('/') {
-                    sh 'docker-compouse build  '
+                    sh 'docker-compouse build '
                 }
             }
         }
