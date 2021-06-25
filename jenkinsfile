@@ -1,0 +1,21 @@
+properties([disableConcurrentBuilds()])
+
+pipeline {
+    agent {
+        label 'ubuntu'
+    }  
+
+    agent any  
+
+    triggers { pollSCM('* * * * *') }
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+        {
+        stage("build docker compouse") {
+            steps {
+                echo " ============== start building compouse =================="
+                dir ('site-jenkins/jenkinsfile') {
+                dir ('site-jenkins') {
+                    sh 'docker-compouse build . '
+                }
+            }
