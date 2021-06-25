@@ -4,9 +4,9 @@ pipeline {
         stage('mk dir') {
             steps {
                 dir ('home\ubuntu')
-                sh 'cd home\ubuntu'
-                sh 'mkdir dockerSite'
-                sh 'git clone https://github.com/NazarServer322/site-jenkins' 
+                 'cd home\ubuntu'
+                 'mkdir dockerSite'
+                 'git clone https://github.com/NazarServer322/site-jenkins' 
             }
         }
   
