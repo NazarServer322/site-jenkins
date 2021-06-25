@@ -1,11 +1,7 @@
 properties([disableConcurrentBuilds()])
 
 pipeline {
-    agent {
-        label 'ubuntu'
-    }  
-
-    agent any  
+    agent any 
 
     triggers { pollSCM('* * * * *') }
     options {
@@ -14,8 +10,9 @@ pipeline {
         stage("build docker compouse") {
             steps {
                 echo " ============== start building compouse =================="
-                dir ('site-jenkins/jenkinsfile') {
-                dir ('site-jenkins') {
-                    sh 'docker-compouse build . '
+                 sh 'mkdir home/ubuntu/docker-site'
+                 sh 'cd home/ubuntu/docker-site'
+                 sh 'git clone https://github.com/NazarServer322/site-jenkins.git '                 
+                 sh 'docker-compouse build . '
                 }
             }
