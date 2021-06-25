@@ -16,3 +16,4 @@ pipeline {
                  sh 'docker-compouse build . '
                 }
             }
+}
