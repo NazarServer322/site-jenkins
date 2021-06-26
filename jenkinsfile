@@ -1,20 +1,19 @@
 pipeline {
-    agent any
-    stages {
-        stage('mk dir') {
-            steps {
-                dir ('home\ubuntu')
-                 cd home\ubuntu
-                 mkdir dockerSite
-                 git clone https://github.com/NazarServer322/site-jenkins'
-            }
-        }
-  
-            steps {
-                echo 'if that step wokr maybe and this gonna work'
-                sh 'docker-compouse build .'
-                sh 'docker-compouse up -d '
-            }
-        }
-    }
+
+   agent any
+
+   stages {
+       stage('docker-compose') {
+           steps {
+              sh "docker-compose build"
+              sh "docker-compose up -d"
+              ...
+           }
+       }
+   }
+   post {
+      always {
+         sh "docker-compose down || true"
+      }
+   }   
 }
