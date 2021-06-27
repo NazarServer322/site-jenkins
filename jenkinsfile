@@ -5,7 +5,7 @@ pipeline {
    stages {
        stage('docker-compose') {
            steps {
-              dir ('site-jenkins')
+              dir ("site-jenkins/")
               sh "docker-compose build"
               sh "docker-compose up -d"
               
